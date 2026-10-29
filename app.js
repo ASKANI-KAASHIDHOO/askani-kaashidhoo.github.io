@@ -1,5 +1,5 @@
 const MONTHS = ['ޖަނަވަރީ', 'ފެބްރުއަރީ', 'މާރިޗު', 'އޭޕްރީލް', 'މެއި', 'ޖޫން', 'ޖުލައި', 'އޯގަސްޓު', 'ސެޕްޓެމްބަރު', 'އޮކްޓޫބަރު', 'ނޮވެމްބަރު', 'ޑިސެމްބަރު'];
-const TYPES = { dharus: 'ދަރުސް', workshop: 'ވޯކްޝޮޕް' };
+const TYPES = { dhauraa: 'ދައުރާ', dharus: 'ދަރުސް' };
 
 const state = { records: [], type: 'all', year: 'all', q: '' };
 const $ = (id) => document.getElementById(id);
@@ -46,7 +46,7 @@ function render() {
 function renderStats() {
   const count = (t) => state.records.filter((r) => r.type === t).length;
   $('stat-dharus').textContent = count('dharus');
-  $('stat-workshop').textContent = count('workshop');
+  $('stat-dhauraa').textContent = count('dhauraa');
   $('stat-people').textContent = state.records.reduce((n, r) => n + (Number(r.participants) || 0), 0);
 
   const years = [...new Set(state.records.map((r) => r.date.slice(0, 4)))].sort().reverse();

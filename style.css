@@ -42,7 +42,7 @@
   --primary-dark: #4b3bb0;
   --accent: #f2a541;
   --dharus: #6a55e0;
-  --workshop: #b5651d;
+  --dhauraa: #b5651d;
   --text: #1c2a30;
   --muted: #5b6b72;
   --bg: #f6f5fd;
@@ -111,7 +111,7 @@ button, input, select { font: inherit; }
   border-right: 5px solid var(--dharus);
   transition: box-shadow .2s, transform .2s;
 }
-.item.workshop { border-right-color: var(--workshop); }
+.item.dhauraa { border-right-color: var(--dhauraa); }
 .item:hover, .item:focus-visible { box-shadow: 0 8px 24px rgba(127,107,238,0.18); transform: translateY(-2px); outline: none; }
 .item h3 { font-weight: 700; font-size: 19px; line-height: 1.6; margin: 6px 0 8px; }
 .item .meta { color: var(--muted); font-size: 15px; display: flex; flex-direction: column; }
@@ -120,7 +120,7 @@ button, input, select { font: inherit; }
   display: inline-block; font-size: 13px; padding: 1px 12px; border-radius: 999px;
   background: #ece9fd; color: var(--dharus);
 }
-.badge.workshop { background: #f8ebdf; color: var(--workshop); }
+.badge.dhauraa { background: #f8ebdf; color: var(--dhauraa); }
 .empty { text-align: center; color: var(--muted); padding: 40px 0; }
 
 /* Detail dialog */

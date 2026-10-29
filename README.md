@@ -1,6 +1,6 @@
-# ASKANI KAASHIDHOO — Dharus & Workshop Records
+# ASKANI KAASHIDHOO — Dhauraa & Dharus Records
 
-Dhivehi (RTL) site listing the NGO's dharus and workshops.
+Dhivehi (RTL) site listing the NGO's dhauraa (ދައުރާ) and dharus (ދަރުސް).
 
 ## Adding a record
 
@@ -23,7 +23,7 @@ Edit `data/records.json` and add an entry:
 }
 ```
 
-- `type`: `dharus` or `workshop`
+- `type`: `dhauraa` or `dharus`
 - `date`: `YYYY-MM-DD`
 - `id`: any unique text
 - Only `id`, `type`, `title` and `date` are required.
