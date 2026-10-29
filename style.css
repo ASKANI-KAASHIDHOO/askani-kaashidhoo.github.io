@@ -74,8 +74,9 @@ button, input, select { font: inherit; }
   text-align: center;
 }
 .bismillah { font-size: 26px; opacity: 0.9; margin-bottom: 10px; }
-.hero .logo { display: block; width: 150px; height: 150px; margin: 0 auto 4px; }
-.hero h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(38px, 8vw, 60px); line-height: 1.9; margin: 4px 0 28px; }
+.brand { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px 0 24px; }
+.brand .logo { width: 120px; height: 120px; flex-shrink: 0; }
+.hero h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(38px, 8vw, 60px); line-height: 1.9; }
 .stats { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 .stat {
   background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
@@ -146,6 +147,8 @@ dd { font-weight: 700; }
 .footer { text-align: center; color: var(--muted); font-size: 14px; padding: 20px 0 30px; }
 
 @media (max-width: 640px) {
+  .brand { gap: 8px; }
+  .brand .logo { width: 72px; height: 72px; }
   .toolbar { flex-direction: column; align-items: stretch; }
   .tabs { justify-content: center; }
   .tab { flex: 1; }
