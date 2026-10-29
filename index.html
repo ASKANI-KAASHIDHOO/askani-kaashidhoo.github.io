@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="dv" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>އަސްކަނި ކާށިދޫ | ދަރުސް އަދި ވޯކްޝޮޕް</title>
+  <meta name="description" content="އަސްކަނި ކާށިދޫގެ ދަރުސްތަކާއި ވޯކްޝޮޕްތަކުގެ ރެކޯޑު">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b6e7f'/><text x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='white' text-anchor='middle'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <p class="bismillah" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <h1>އަސްކަނި ކާށިދޫ</h1>
+      <p class="tagline">ދަރުސްތަކާއި ވޯކްޝޮޕްތަކުގެ ރެކޯޑު</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num" id="stat-dharus">0</span><span>ދަރުސް</span></div>
+        <div class="stat"><span class="num" id="stat-workshop">0</span><span>ވޯކްޝޮޕް</span></div>
+        <div class="stat"><span class="num" id="stat-people">0</span><span>ބައިވެރިން</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="toolbar">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-type="all">ހުރިހާ</button>
+        <button class="tab" data-type="dharus">ދަރުސް</button>
+        <button class="tab" data-type="workshop">ވޯކްޝޮޕް</button>
+      </div>
+      <div class="filters">
+        <select id="year" aria-label="އަހަރު">
+          <option value="all">ހުރިހާ އަހަރެއް</option>
+        </select>
+        <input id="search" type="search" placeholder="ހޯދާ..." aria-label="ހޯދާ">
+      </div>
+    </div>
+
+    <p class="count" id="count"></p>
+    <div class="list" id="list"></div>
+    <p class="empty" id="empty" hidden>އެއްވެސް ރެކޯޑެއް ނުފެނުނު</p>
+  </main>
+
+  <dialog id="detail">
+    <article>
+      <button class="close" id="close" aria-label="ބަންދުކުރޭ">✕</button>
+      <span class="badge" id="d-type"></span>
+      <h2 id="d-title"></h2>
+      <p class="ar-text" id="d-arabic" lang="ar" dir="rtl"></p>
+      <dl id="d-fields"></dl>
+      <div id="d-desc" class="desc"></div>
+    </article>
+  </dialog>
+
+  <footer class="footer">
+    <div class="container">© <span id="year-now">2026</span> އަސްކަނި ކާށިދޫ</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
