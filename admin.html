@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=4">
-  <link rel="stylesheet" href="admin.css?v=1">
+  <link rel="stylesheet" href="admin.css?v=2">
 </head>
 <body>
 
@@ -45,6 +45,19 @@
       </label>
       <p class="form-error" id="login-error" hidden></p>
       <button class="btn-primary" type="submit">ލޮގިން ކުރޭ</button>
+      <button class="link-btn" type="button" id="forgot">ޕާސްވޯޑް ހަނދާން ނެތް؟</button>
+    </form>
+
+    <form class="panel login" id="reset" hidden>
+      <h2>އައު ޕާސްވޯޑް</h2>
+      <label>އައު ޕާސްވޯޑް
+        <input type="password" name="password" dir="ltr" autocomplete="new-password" minlength="8" required>
+      </label>
+      <label>އަލުން ޖައްސަވާ
+        <input type="password" name="confirm" dir="ltr" autocomplete="new-password" minlength="8" required>
+      </label>
+      <p class="form-error" id="reset-error" hidden></p>
+      <button class="btn-primary" type="submit">ޕާސްވޯޑް ބަދަލުކުރޭ</button>
     </form>
 
     <section id="panel" hidden>
@@ -117,6 +130,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
   <script src="config.js?v=5"></script>
-  <script src="admin.js?v=1"></script>
+  <script src="admin.js?v=2"></script>
 </body>
 </html>

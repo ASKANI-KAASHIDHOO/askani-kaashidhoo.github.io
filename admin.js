@@ -24,7 +24,7 @@ function toast(msg) {
 }
 
 function show(view) {
-  for (const id of ['setup', 'login', 'panel']) $(id).hidden = id !== view;
+  for (const id of ['setup', 'login', 'reset', 'panel']) $(id).hidden = id !== view;
   $('user-box').hidden = view !== 'panel';
 }
 
@@ -36,8 +36,7 @@ async function onSession(session) {
   const { data: isAdmin, error } = await db.rpc('is_admin');
   if (error || !isAdmin) {
     await db.auth.signOut();
-    $('login-error').textContent = 'މި އެކައުންޓަށް އެޑްމިން ހުއްދައެއް ނެތް';
-    $('login-error').hidden = false;
+    loginError('މި އެކައުންޓަށް އެޑްމިން ހުއްދައެއް ނެތް');
     return show('login');
   }
 
@@ -50,7 +49,7 @@ $('login').addEventListener('submit', async (e) => {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button');
-  $('login-error').hidden = true;
+  loginError('');
   btn.disabled = true;
   const { data, error } = await db.auth.signInWithPassword({
     email: form.email.value.trim(),
@@ -58,11 +57,53 @@ $('login').addEventListener('submit', async (e) => {
   });
   btn.disabled = false;
   if (error) {
-    $('login-error').textContent = 'އީމެއިލް ނުވަތަ ޕާސްވޯޑް ރަނގަޅެއް ނޫން';
-    $('login-error').hidden = false;
+    loginError('އީމެއިލް ނުވަތަ ޕާސްވޯޑް ރަނގަޅެއް ނޫން');
     return;
   }
   form.password.value = '';
+  onSession(data.session);
+});
+
+// --- Password reset ---
+
+function loginError(msg) {
+  $('login-error').textContent = msg;
+  $('login-error').hidden = !msg;
+}
+
+$('forgot').addEventListener('click', async () => {
+  const email = $('login').email.value.trim();
+  if (!email) {
+    loginError('ފުރަތަމަ އީމެއިލް ޖައްސަވާ');
+    return $('login').email.focus();
+  }
+  const { error } = await db.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+  if (error) return loginError('ލިންކް ފޮނުވައެއް ނުލެވުނު: ' + error.message);
+  loginError('');
+  toast('ޕާސްވޯޑް ބަދަލުކުރާނެ ލިންކް އީމެއިލަށް ފޮނުވިއްޖެ');
+});
+
+$('reset').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const err = $('reset-error');
+  if (form.password.value !== form.confirm.value) {
+    err.textContent = 'ދެ ޕާސްވޯޑް އެއްގޮތެއް ނޫން';
+    err.hidden = false;
+    return;
+  }
+  const btn = form.querySelector('button');
+  btn.disabled = true;
+  const { error } = await db.auth.updateUser({ password: form.password.value });
+  btn.disabled = false;
+  if (error) {
+    err.textContent = 'ބަދަލު ނުކުރެވުނު: ' + error.message;
+    err.hidden = false;
+    return;
+  }
+  form.reset();
+  toast('ޕާސްވޯޑް ބަދަލުކުރެވިއްޖެ');
+  const { data } = await db.auth.getSession();
   onSession(data.session);
 });
 
@@ -174,6 +215,16 @@ form.addEventListener('submit', async (e) => {
 if (!window.supabaseReady()) {
   show('setup');
 } else {
+  // A reset-password email link lands here with #...type=recovery (or #error=... if it expired).
+  const hash = new URLSearchParams(location.hash.slice(1));
+  const recovering = hash.get('type') === 'recovery';
   db = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-  db.auth.getSession().then(({ data }) => onSession(data.session));
+  db.auth.getSession().then(({ data }) => {
+    if (recovering && data.session) return show('reset');
+    if (hash.get('error')) {
+      history.replaceState(null, '', location.pathname);
+      loginError('ލިންކް ބާޠިލުވެއްޖެ. އަލުން "ޕާސްވޯޑް ހަނދާން ނެތް؟" އަށް ފިތާލާ');
+    }
+    onSession(data.session);
+  });
 }

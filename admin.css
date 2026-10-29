@@ -44,6 +44,8 @@ input[type="date"], input[type="time"], input[type="number"] { direction: ltr; t
 .btn-ghost { background: rgba(255,255,255,0.15); color: #fff; padding: 4px 16px; border: 1px solid rgba(255,255,255,0.35); }
 .btn-ghost.dark { background: none; color: var(--muted); border-color: var(--border); padding: 8px 20px; }
 .login .btn-primary { width: 100%; margin-top: 6px; }
+.link-btn { display: block; margin: 12px auto 0; background: none; border: 0; color: var(--primary); font: inherit; font-size: 15px; cursor: pointer; }
+.link-btn:hover { text-decoration: underline; }
 .form-error { color: #b42318; background: #fef3f2; border-radius: 8px; padding: 6px 12px; margin: 8px 0; font-size: 15px; }
 
 /* Toolbar + list */
