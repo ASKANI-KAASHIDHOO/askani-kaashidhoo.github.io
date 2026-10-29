@@ -67,7 +67,7 @@ function openDetail(id) {
     ['ދެއްވި ފަރާތް', r.speaker],
     ['މައުޟޫޢު', r.topic],
     ['ބައިވެރިން', r.participants],
-  ].filter(([, v]) => v !== undefined && v !== '');
+  ].filter(([, v]) => v !== undefined && v !== null && v !== '');
   $('d-fields').innerHTML = fields.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
 
   const paras = [r.description, r.notes].filter(Boolean);
@@ -94,8 +94,19 @@ $('close').addEventListener('click', () => $('detail').close());
 $('detail').addEventListener('click', (e) => { if (e.target === $('detail')) $('detail').close(); });
 $('year-now').textContent = new Date().getFullYear();
 
-fetch('data/records.json')
-  .then((res) => res.json())
+// Records come from Supabase once it is configured; until then, from the sample file.
+async function loadRecords() {
+  if (window.supabaseReady()) {
+    const db = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    const { data, error } = await db.from('records').select('*').order('date', { ascending: false });
+    if (error) throw error;
+    return data;
+  }
+  const res = await fetch('data/records.json');
+  return res.json();
+}
+
+loadRecords()
   .then((data) => {
     state.records = data.sort((a, b) => b.date.localeCompare(a.date));
     renderStats();

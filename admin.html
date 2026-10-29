@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="dv" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>އެޑްމިން | އަސްކަނި ކާށިދޫ</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta name="theme-color" content="#4b3bb0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="admin.css?v=1">
+</head>
+<body>
+
+  <header class="admin-bar">
+    <div class="container admin-bar-inner">
+      <a href="./" class="admin-brand">
+        <img src="images/logo-white.png" alt="" width="44" height="44">
+        <span>އަސްކަނި ކާށިދޫ</span>
+        <small>އެޑްމިން</small>
+      </a>
+      <div class="admin-user" id="user-box" hidden>
+        <span id="user-email" dir="ltr"></span>
+        <button class="btn-ghost" id="logout">ލޮގްއައުޓް</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container admin-main">
+    <section class="panel notice" id="setup" hidden>
+      <h2>Supabase ސެޓަޕް ނުކުރެވި</h2>
+      <p dir="ltr">Add your Supabase project URL and anon key to <code>config.js</code>, then reload this page.</p>
+    </section>
+
+    <form class="panel login" id="login" hidden>
+      <h2>ލޮގިން</h2>
+      <label>އީމެއިލް
+        <input type="email" name="email" dir="ltr" autocomplete="username" required>
+      </label>
+      <label>ޕާސްވޯޑް
+        <input type="password" name="password" dir="ltr" autocomplete="current-password" required>
+      </label>
+      <p class="form-error" id="login-error" hidden></p>
+      <button class="btn-primary" type="submit">ލޮގިން ކުރޭ</button>
+    </form>
+
+    <section id="panel" hidden>
+      <div class="admin-toolbar">
+        <h2>ރެކޯޑުތައް <span class="muted" id="admin-count"></span></h2>
+        <div class="admin-actions">
+          <input id="admin-search" type="search" placeholder="ހޯދާ..." aria-label="ހޯދާ">
+          <button class="btn-primary" id="new-record">+ އައު ރެކޯޑެއް</button>
+        </div>
+      </div>
+      <div class="admin-list" id="admin-list"></div>
+      <p class="empty" id="admin-empty" hidden>އަދި އެއްވެސް ރެކޯޑެއް ނެތް</p>
+    </section>
+  </main>
+
+  <dialog id="editor">
+    <form id="record-form" method="dialog">
+      <div class="editor-head">
+        <h2 id="editor-title">އައު ރެކޯޑެއް</h2>
+        <button type="button" class="close" id="editor-close" aria-label="ބަންދުކުރޭ">✕</button>
+      </div>
+
+      <div class="type-pick">
+        <label><input type="radio" name="type" value="dhauraa" required> ދައުރާ</label>
+        <label><input type="radio" name="type" value="dharus"> ދަރުސް</label>
+      </div>
+
+      <div class="grid">
+        <label class="full">ސުރުޚީ *
+          <input name="title" required>
+        </label>
+        <label class="full">ޢަރަބި ޢިބާރާތް
+          <input name="arabic" lang="ar" class="ar-input">
+        </label>
+        <label>ތާރީޚް *
+          <input type="date" name="date" required>
+        </label>
+        <label>ވަގުތު
+          <input type="time" name="time">
+        </label>
+        <label>ތަން
+          <input name="place">
+        </label>
+        <label>ދެއްވި ފަރާތް
+          <input name="speaker">
+        </label>
+        <label>މައުޟޫޢު
+          <input name="topic">
+        </label>
+        <label>ބައިވެރިން
+          <input type="number" name="participants" min="0" inputmode="numeric">
+        </label>
+        <label class="full">ތަފްޞީލު
+          <textarea name="description" rows="3"></textarea>
+        </label>
+        <label class="full">ނޯޓް
+          <textarea name="notes" rows="2"></textarea>
+        </label>
+      </div>
+
+      <p class="form-error" id="form-error" hidden></p>
+      <div class="editor-actions">
+        <button type="submit" class="btn-primary" id="save">ރައްކާކުރޭ</button>
+        <button type="button" class="btn-ghost dark" id="cancel">ކެންސަލް</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js?v=4"></script>
+  <script src="admin.js?v=1"></script>
+</body>
+</html>
