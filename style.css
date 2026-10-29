@@ -38,16 +38,16 @@
 }
 
 :root {
-  --primary: #0b6e7f;
-  --primary-dark: #084f5c;
+  --primary: #7f6bee;
+  --primary-dark: #4b3bb0;
   --accent: #f2a541;
-  --dharus: #0b6e7f;
+  --dharus: #6a55e0;
   --workshop: #b5651d;
   --text: #1c2a30;
   --muted: #5b6b72;
-  --bg: #f4f8f9;
+  --bg: #f6f5fd;
   --card: #ffffff;
-  --border: #dde8ea;
+  --border: #e3e0f7;
   --radius: 14px;
   --font: 'MV Funa', 'Sakkal Majalla', 'Amiri', serif;
   --font-head: 'Funa Black', 'MV Funa', 'Sakkal Majalla', 'Amiri', serif;
@@ -68,12 +68,13 @@ button, input, select { font: inherit; }
 
 /* Header */
 .hero {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary) 60%, #1aa3b5);
+  background: linear-gradient(135deg, #362a8c, var(--primary-dark) 45%, var(--primary));
   color: #fff;
   padding: 36px 0 44px;
   text-align: center;
 }
-.bismillah { font-size: 26px; opacity: 0.9; margin-bottom: 6px; }
+.bismillah { font-size: 26px; opacity: 0.9; margin-bottom: 10px; }
+.hero .logo { display: block; width: 150px; height: 150px; margin: 0 auto 4px; }
 .hero h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(38px, 8vw, 60px); line-height: 1.4; }
 .tagline { font-size: 19px; opacity: 0.9; margin-bottom: 28px; }
 .stats { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
@@ -111,13 +112,13 @@ button, input, select { font: inherit; }
   transition: box-shadow .2s, transform .2s;
 }
 .item.workshop { border-right-color: var(--workshop); }
-.item:hover, .item:focus-visible { box-shadow: 0 8px 24px rgba(11,110,127,0.12); transform: translateY(-2px); outline: none; }
+.item:hover, .item:focus-visible { box-shadow: 0 8px 24px rgba(127,107,238,0.18); transform: translateY(-2px); outline: none; }
 .item h3 { font-weight: 700; font-size: 19px; line-height: 1.6; margin: 6px 0 8px; }
 .item .meta { color: var(--muted); font-size: 15px; display: flex; flex-direction: column; }
 
 .badge {
   display: inline-block; font-size: 13px; padding: 1px 12px; border-radius: 999px;
-  background: #e2f1f3; color: var(--dharus);
+  background: #ece9fd; color: var(--dharus);
 }
 .badge.workshop { background: #f8ebdf; color: var(--workshop); }
 .empty { text-align: center; color: var(--muted); padding: 40px 0; }
@@ -127,7 +128,7 @@ dialog {
   border: 0; border-radius: 18px; padding: 0; width: min(620px, calc(100% - 32px));
   margin: auto; color: var(--text); box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
-dialog::backdrop { background: rgba(6, 40, 46, 0.55); }
+dialog::backdrop { background: rgba(30, 22, 80, 0.55); }
 dialog article { padding: 28px; position: relative; }
 dialog h2 { font-family: var(--font-head); font-weight: 900; font-size: 26px; line-height: 1.5; margin: 8px 0 10px; }
 .close {
