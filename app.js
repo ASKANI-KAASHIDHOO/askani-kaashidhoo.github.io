@@ -47,7 +47,6 @@ function renderStats() {
   const count = (t) => state.records.filter((r) => r.type === t).length;
   $('stat-dharus').textContent = count('dharus');
   $('stat-dhauraa').textContent = count('dhauraa');
-  $('stat-people').textContent = state.records.reduce((n, r) => n + (Number(r.participants) || 0), 0);
 
   const years = [...new Set(state.records.map((r) => r.date.slice(0, 4)))].sort().reverse();
   $('year').insertAdjacentHTML('beforeend', years.map((y) => `<option value="${y}">${y}</option>`).join(''));

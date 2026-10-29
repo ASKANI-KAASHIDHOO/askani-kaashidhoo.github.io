@@ -75,7 +75,7 @@ button, input, select { font: inherit; }
 }
 .bismillah { font-size: 26px; opacity: 0.9; margin-bottom: 10px; }
 .hero .logo { display: block; width: 150px; height: 150px; margin: 0 auto 4px; }
-.hero h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(38px, 8vw, 60px); line-height: 1.4; margin-bottom: 24px; }
+.hero h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(38px, 8vw, 60px); line-height: 1.9; margin: 4px 0 28px; }
 .stats { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 .stat {
   background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
