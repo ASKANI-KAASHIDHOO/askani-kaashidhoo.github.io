@@ -9,6 +9,11 @@ function formatDate(iso) {
   return `${d} ${MONTHS[m - 1]} ${y}`;
 }
 
+// Arabic is shown without harakat, even if a record includes them.
+function stripHarakat(s) {
+  return String(s ?? '').replace(/[ؐ-ًؚ-ٰٟۖ-ۭ]/g, '');
+}
+
 function esc(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
@@ -54,7 +59,7 @@ function openDetail(id) {
   $('d-type').textContent = TYPES[r.type];
   $('d-type').className = `badge ${r.type}`;
   $('d-title').textContent = r.title;
-  $('d-arabic').textContent = r.arabic || '';
+  $('d-arabic').textContent = stripHarakat(r.arabic);
 
   const fields = [
     ['ތާރީޚް', formatDate(r.date)],
