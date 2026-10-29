@@ -1,4 +1,20 @@
-/* Thaana: MV Funa. Arabic falls through to Amiri. */
+/* Thaana: MV Funa. Arabic: Sakkal Majalla, with Amiri as fallback. */
+@font-face {
+  font-family: 'Sakkal Majalla';
+  src: url('fonts/sakkal-majalla-400.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+  size-adjust: 118%;
+  unicode-range: U+0000-077F, U+07C0-10FFFF;
+}
+@font-face {
+  font-family: 'Sakkal Majalla';
+  src: url('fonts/sakkal-majalla-700.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+  size-adjust: 118%;
+  unicode-range: U+0000-077F, U+07C0-10FFFF;
+}
 @font-face {
   font-family: 'MV Funa';
   src: url('fonts/mv-funa-regular.ttf') format('truetype');
@@ -33,9 +49,9 @@
   --card: #ffffff;
   --border: #dde8ea;
   --radius: 14px;
-  --font: 'MV Funa', 'Amiri', serif;
-  --font-head: 'Funa Black', 'MV Funa', 'Amiri', serif;
-  --font-ar: 'Amiri', serif;
+  --font: 'MV Funa', 'Sakkal Majalla', 'Amiri', serif;
+  --font-head: 'Funa Black', 'MV Funa', 'Sakkal Majalla', 'Amiri', serif;
+  --font-ar: 'Sakkal Majalla', 'Amiri', serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

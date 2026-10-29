@@ -31,4 +31,4 @@ Edit `data/records.json` and add an entry:
 ## Fonts
 
 - Thaana: MV Funa (Regular, Bold) and MV Funa Black for headings — in `fonts/`
-- Arabic: Amiri (Google Fonts)
+- Arabic: Sakkal Majalla — in `fonts/` (Amiri from Google Fonts as fallback)
